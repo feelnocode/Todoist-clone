@@ -8,17 +8,30 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showingSheet = false
+    
     var body: some View {
         NavigationStack {
             VStack{
                 Spacer()
                 HStack{
                     Spacer()
-                    AddButtonView()
+                    Button("+"){
+                        showingSheet.toggle()
+                    }
+                        .buttonStyle(PlusButton())
+                        .sheet(isPresented: $showingSheet){
+                            AddTaskView()
+                                .presentationDetents([.height(180)])
+                        }
+                        
                 }
             }
             .background(.specificBackground)
             .navigationTitle("Today")
+            .toolbar(){
+                Button("", systemImage: "ellipsis"){}
+            }
         }
     }
 }

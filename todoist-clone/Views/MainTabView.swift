@@ -13,7 +13,9 @@ struct MainTabView: View {
                 Tab("Home", systemImage: "house"){
                     HomeView()
                 }
-                Tab("Upcoming", systemImage: "calendar"){}
+                Tab("Upcoming", systemImage: "calendar"){
+                    UpcomingView()
+                }
                 Tab("Search", systemImage: "magnifyingglass"){}
                 Tab("Browse", systemImage: "list.clipboard"){}
         }
