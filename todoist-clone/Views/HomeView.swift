@@ -13,6 +13,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack{
+                TasksListView()
                 Spacer()
                 HStack{
                     Spacer()
@@ -22,7 +23,7 @@ struct HomeView: View {
                         .buttonStyle(PlusButton())
                         .sheet(isPresented: $showingSheet){
                             AddTaskView()
-                                .presentationDetents([.height(180)])
+                                .presentationDetents([.height(200)])
                         }
                         
                 }

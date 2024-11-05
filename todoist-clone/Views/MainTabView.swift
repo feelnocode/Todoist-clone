@@ -17,7 +17,9 @@ struct MainTabView: View {
                     UpcomingView()
                 }
                 Tab("Search", systemImage: "magnifyingglass"){}
-                Tab("Browse", systemImage: "list.clipboard"){}
+                Tab("Done", systemImage: "list.clipboard"){
+                    DoneView()
+                }
         }
         .tint(.specificRed)
         .onAppear {

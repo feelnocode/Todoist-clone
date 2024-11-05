@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddTaskView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelContext
     @FocusState var showKeyboard: Bool
     @State private var taskTitle = ""
     @State private var taskDescription = ""
+    @State private var priority = 1
     var body: some View {
         VStack(alignment: .leading){
             Group{
@@ -26,20 +29,21 @@ struct AddTaskView: View {
             .padding(.trailing, 15)
             .padding(.bottom, 10)
             .textFieldStyle(.plain)
-            ScrollView(.horizontal) {
-                HStack{
-                    Button("first"){}
-                    Button("second"){}
+            
+            VStack{
+                Text("Priority")
+                    .foregroundStyle(.secondary)
+                Picker("Priority", selection: $priority) {
+                    ForEach(1...4 , id:\.self) {priority in
+                        Text("\(priority)")
+                    }
                 }
-                .buttonStyle(.bordered)
-                .foregroundStyle(.secondary)
-                
-               
             }
-            Divider()
+            .pickerStyle(.segmented)
             HStack(){
                 Spacer()
                 Button(action: {
+                    modelContext.insert(TaskItem(title: taskTitle.trimmingCharacters(in: .whitespaces), taskDescription: taskDescription.trimmingCharacters(in: .whitespaces), priority: priority, isCompleted: false))
                     dismiss()
                 }, label: {
                     Image(systemName: "arrow.up")

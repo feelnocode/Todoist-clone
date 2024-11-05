@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct todoist_cloneApp: App {
@@ -13,5 +14,6 @@ struct todoist_cloneApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: TaskItem.self)
     }
 }

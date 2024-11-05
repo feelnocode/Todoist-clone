@@ -9,9 +9,9 @@ import SwiftUI
 
 struct UpcomingView: View {
     var body: some View {
-            Text("tbd")
+        Text("")
+        }
     }
-}
 
 #Preview {
     UpcomingView()
